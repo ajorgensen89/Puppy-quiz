@@ -135,13 +135,9 @@ document.addEventListener("DOMContentLoaded", function () {
 function runQuiz(gameType) {
 if (gameType === "easy") {
     displayEasy();
-} else {
-    alert("wrong game");
-}
-
-if (gameType === "medium") {
+} else if (gameType === "medium") {
 displayMedium();
-} if (gameType === "hard"); {
+} else if (gameType === "hard"); {
 displayHard();
 }
 };
