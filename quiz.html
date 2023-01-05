@@ -25,30 +25,36 @@
 <body>
     <div class="quiz-field">
         <div>
-            <h1>Paw Patrol Quiz</h1>
-        </div>
-        <div>
-            <form name="id" onsubmit="submitted(event)">
-                <!--icon?-->
-                <p><label for="username"> Create a username to play!</label></p>
-                <input placeholder="create username" type="text" class="username-hover" id="username" required>
-            </form>
+            <div>Good Luck <span class="name"></span>!</div>
+            <h4 id="progress-name">Question</h4>
+            <div>Progress bar 1 0f 10
+                <div id="progress-full">Progress bar full 10 0f 10</div>
+            </div>
+
+            <div>
+                <span>Score</span>
+                <span id="score">0</span>
+            </div>
+            <div id="question">Actual Question</div>
+            <div>Choice container
+                <p>A</p>
+                <P class="choice-box" data-number="1">choice</P>
+
+            </div>
+            <div>Choice container
+                <p>B</p>
+                <P class="choice-box" data-number="1">choice2</P>
+            </div>
+            <div>Choice container
+                <p>C</p>
+                <P class="choice-box" data-number="1">choice3</P>
+            </div>
         </div>
 
-        <div>
-            <a href="rules.html">
-                <button type="submit" onclick="this.style.display('none')" class="button-normal button-hover"><h2 >Enter Quiz Zone!</h2></button>
-            </a>
-        </div>
-    </div>
-
-    <!--javascript link-->
-    <script src="assets/js/script.js"></script>
-    <!--font awesome script-->
-    <script src="https://kit.fontawesome.com/f26ba66020.js" crossorigin="anonymous"></script>
-    <script>
-       
-    </script>
+        <!--javascript link-->
+        <script src="assets/js/script.js"></script>
+        <!--font awesome script-->
+        <script src="https://kit.fontawesome.com/f26ba66020.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
