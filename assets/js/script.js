@@ -2,7 +2,7 @@ console.log("Fudge");
 /** Fixed score and question total value */
 const MAX_SCORE = 1;
 const MAX_QUESTIONS = 4;
-
+/**Query selector used to targert either class/id */
 let question = document.querySelector("#question");
 let choices = Array.from(document.querySelectorAll(".choice-box"));
 let progressName = document.querySelector("#progress-name");
@@ -21,7 +21,7 @@ let numberOfQuestions = [{
         choice1: "Major Goodway",
         choice2: "Major Humdinger",
         choice3: "Major Johnson",
-        answers: 2,
+        answers: 1,
     },
     {
         question: "What name is given to the puppy who wears a blue police unifrom in Paw Patrol?",

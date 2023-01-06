@@ -4,3 +4,8 @@ https://www.bing.com/videos/search?q=javascript+tutorial+video+for+a+pub+quiz&&v
 
 Assistance from [Javascript Tutorial](https://www.javascripttutorial.net/web-apis/javascript-sessionstorage/) for storing Username while using browser.
 
+
+
+
+Error Debug.
+
