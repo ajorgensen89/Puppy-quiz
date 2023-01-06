@@ -1,13 +1,12 @@
 console.log("Fudge");
 /** Fixed score and question total value */
 const MAX_SCORE = 1;
-const MAX_QUESTIONS = 4;
+const MAX_QUESTIONS = 5;
 /**Query selector used to targert either class/id */
 let question = document.querySelector("#question");
 let choices = Array.from(document.querySelectorAll(".choice-box"));
 let progressName = document.querySelector("#progress-name");
 let scoreTotal = document.querySelector('#score');
-let progressBarFull = document.querySelector("#progress-full");
 
 let actualQuestion = {};
 let checkAnswer = true;
@@ -21,7 +20,7 @@ let numberOfQuestions = [{
         choice1: "Major Goodway",
         choice2: "Major Humdinger",
         choice3: "Major Johnson",
-        answers: 1,
+        answers: 2,
     },
     {
         question: "What name is given to the puppy who wears a blue police unifrom in Paw Patrol?",
@@ -59,31 +58,34 @@ let numberOfQuestions = [{
         answers: 3,
     }
 ];
-
+/**Start the quiz function*/
 startGame = () => {
     questionCount = 0;
     score = 0;
+    /**Spread operator to get any values from numberOfQuestions */
     otherQuestions = [...numberOfQuestions];
     getNextQuestion();
 }
+/**To get new question function*/
 getNextQuestion = () => {
-    if (otherQuestions.length === 0 || questionCount > MAX_QUESTIONS) {
+    if (otherQuestions.length === 0 || questionCount >= MAX_QUESTIONS) {
+        /**Track score */
         localStorage.setItem("previousScore", score);
-
+        /**Go to this html page */
         return window.location.assign("end.html");
     }
-
+    
     questionCount++;
     progressName.textContent = `Question ${questionCount} of ${MAX_QUESTIONS}`;
-
-    let questionId = Math.floor(Math.random() === otherQuestions.length);
+/**Track the question the user is currently on and create quesion index*/
+    let questionId = Math.floor(Math.random() * otherQuestions.length);
     actualQuestion = otherQuestions[questionId];
     question.textContent = actualQuestion.question;
 
     choices.forEach(choice => {
         let number = choice.dataset["number"];
         choice.textContent = actualQuestion["choice" + number];
-        
+
     });
     otherQuestions.splice(questionId, 1);
 
@@ -91,32 +93,32 @@ getNextQuestion = () => {
 }
 
 choices.forEach(choice => {
-    choice.addEventListener("click", (e) => {
-        if (!checkAnswer) 
-        return
+    choice.addEventListener("click", e => {
+        if (!checkAnswer) return
+
         checkAnswer = false;
         let selectedChoice = e.target;
         let selectedAnswer = selectedChoice.dataset["number"];
-        let classToApply = selectedAnswer == actualQuestion.answer ? "correct" : "incorrect";
+        let classToApply = selectedAnswer == actualQuestion.answers ? "correct" : "incorrect";
 
-        if(classToApply === 'correct') {
+        if (classToApply === 'correct') {
             incrementScore(MAX_SCORE);
         }
         selectedChoice.parentElement.classList.add(classToApply);
 
         setTimeout(() => {
-selectedChoice.parentElement.classList.remove(classToApply)
-getNextQuestion();
+            selectedChoice.parentElement.classList.remove(classToApply);
+            getNextQuestion();
         }, 1000)
     })
 })
 
 incrementScore = num => {
-    score += num;
+    score +=num;
     scoreTotal.textContent = score;
 }
 
-startGame()
+startGame();
 
 
 // function submission(event) {
